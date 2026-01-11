@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>QueenFit Store</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+/* BASE */
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#0b0b0b;
+    color:white;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    height:70px;
+    background:rgba(0,0,0,.92);
+    display:flex;
+    align-items:center;
+    padding:0 30px;
+    gap:20px;
+    z-index:1000;
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+/* BOTÃO MENU */
+.menu-btn{
+    font-size:32px;
+    cursor:pointer;
+    user-select:none;
+}
+.menu-btn:hover{color:#f25c54}
+
+/* LOGO */
+.navbar img{height:100px}
+
+/* MENU LATERAL */
+.menu-lateral{
+    position:fixed;
+    top:0;
+    left:-260px;
+    width:260px;
+    height:100vh;
+    background:#0e0e0e;
+    padding:90px 25px;
+    transition:.4s;
+    z-index:2000;
+    box-shadow:10px 0 30px rgba(0,0,0,.6);
+}
+.menu-lateral.active{left:0}
+
+/* FECHAR */
+.menu-fechar{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+.menu-fechar:hover{color:#f25c54}
+
+/* LINKS MENU */
+.menu-lateral a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    margin-bottom:22px;
+    font-weight:600;
+}
+.menu-lateral a:hover{color:#f25c54}
+
+/* DROPDOWN PRODUTOS */
+.produtos-btn{cursor:pointer}
+.submenu{
+    margin-left:15px;
+    margin-top:10px;
+    display:none;
+}
+.submenu a{
+    font-size:16px;
+    font-weight:500;
+    margin-bottom:15px;
+    color:#ccc;
+}
+.submenu a:hover{color:#f25c54}
+
+/* HERO */
+.hero{
+    height:95vh;
+    background:
+      linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.9)),
+      url("mulher.jpeg");
+    background-size:cover;
+    background-position:center top;
+    display:flex;
+    align-items:center;
+    padding:0 70px;
+}
+.hero h1{
+    font-size:58px;
+    font-weight:700;
+    max-width:600px;
+}
+
+/* SECTION */
+.section{
+    padding:100px 50px;
+}
+.section h2{
+    font-size:34px;
+    margin-bottom:40px;
+}
+
+/* PRODUTOS */
+.produtos{
+    display:flex;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+/* CARD */
+.card{
+    width:300px;
+    background:linear-gradient(180deg,#141414,#0d0d0d);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 14px 35px rgba(0,0,0,.6);
+    position:relative;
+    transition:.4s;
+}
+.card:hover{transform:translateY(-12px)}
+
+/* IMAGEM */
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:contain;
+    padding:18px;
+    background:#0c0c0c;
+    transition:opacity .3s;
+}
+
+/* INFO */
+.info{
+    padding:18px;
+    text-align:center;
+}
+.nome{font-weight:600}
+
+/* SETAS */
+.seta{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:40px;
+    height:40px;
+    background:rgba(0,0,0,.75);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    cursor:pointer;
+}
+.seta:hover{background:#f25c54}
+.esq{left:12px}
+.dir{right:12px}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+    .hero h1{font-size:42px}
+    .produtos{justify-content:center}
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU LATERAL -->
+<div class="menu-lateral" id="menu">
+    <div class="menu-fechar" onclick="toggleMenu()">←</div>
+
+    <a href="index.html">Home</a>
+
+    <a class="produtos-btn" onclick="toggleProdutos()">Produtos ▾</a>
+    <div class="submenu" id="submenuProdutos">
+        <a href="tenis.html">Tênis</a>
+        <a href="camisas.html">Camisas</a>
+        <a href="shorts.html">Shorts</a>
+        <a href="conjuntos.html">Conjuntos</a>
+        <a href="garrafas.html">Garrafas</a>
+        <a href="acessorios.html">Acessórios</a>
+    </div>
+
+    <a href="colecao.html">Coleções</a>
+    <a href="#vendido">Mais vendidos</a>
+    <a href="https://www.instagram.com/queen.fit.store/" target="_blank">Instagram</a>
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <img src="logo.png">
+</div>
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Vista sua melhor versão</h1>
+</div>
+
+<!-- MAIS VENDIDO -->
+<div class="section" id="vendido">
+<h2>Mais Vendido</h2>
+
+<div class="produtos">
+<div class="card">
+<a href="https://s.shopee.com.br/BNO1EABCB" target="_blank" style="color:white;text-decoration:none">
+<img id="img1" src="short.jpeg">
+<div class="info"><div class="nome">Short Fitness Feminino</div></div>
+</a>
+<div class="seta esq" onclick="prev()">‹</div>
+<div class="seta dir" onclick="next()">›</div>
+</div>
+</div>
+</div>
+
+<script>
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+function toggleProdutos(){
+    const sm=document.getElementById("submenuProdutos");
+    sm.style.display=sm.style.display==="block"?"none":"block";
+}
+
+const imgs=["short.jpeg","short.png","short3.jpeg"];
+let i=0;
+const img=document.getElementById("img1");
+
+function trocar(){
+    img.style.opacity=0;
+    setTimeout(()=>{
+        img.src=imgs[i];
+        img.style.opacity=1;
+    },200);
+}
+function next(){
+    i=(i+1)%imgs.length;
+    trocar();
+}
+function prev(){
+    i=(i-1+imgs.length)%imgs.length;
+    trocar();
+}
+</script>
+
+</body>
+</html>
