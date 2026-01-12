@@ -19,7 +19,7 @@ body{
     overflow-x:hidden;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 .navbar{
     position:fixed;
     top:0;
@@ -35,7 +35,7 @@ body{
 .menu-btn{font-size:32px;cursor:pointer}
 .navbar img{height:100px}
 
-/* MENU */
+/* ================= MENU ================= */
 .menu-lateral{
     position:fixed;
     top:0;
@@ -48,7 +48,13 @@ body{
     z-index:2000;
 }
 .menu-lateral.active{left:0}
-.menu-fechar{position:absolute;top:20px;right:20px;font-size:30px;cursor:pointer}
+.menu-fechar{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer
+}
 .menu-lateral a{
     display:block;
     color:white;
@@ -58,7 +64,7 @@ body{
     font-weight:600;
 }
 
-/* HERO */
+/* ================= HERO DESKTOP ================= */
 .hero{
     height:95vh;
     background:
@@ -73,20 +79,31 @@ body{
 .hero h1{
     font-size:58px;
     max-width:600px;
+    animation:heroDesktop 1.2s ease;
 }
 
-/* SECTION */
+@keyframes heroDesktop{
+    from{opacity:0;transform:translateX(-40px)}
+    to{opacity:1;transform:translateX(0)}
+}
+
+/* ================= SECTION ================= */
 .section{padding:100px 50px}
 .section h2{font-size:34px;margin-bottom:40px}
 
-/* PRODUTOS */
+/* ================= PRODUTOS ================= */
 .produtos{display:flex;gap:30px;flex-wrap:wrap}
+
 .card{
     width:300px;
     background:#111;
     border-radius:24px;
     overflow:hidden;
     position:relative;
+    transition:.4s;
+}
+.card:hover{
+    transform:translateY(-12px);
 }
 .card img{
     width:100%;
@@ -96,7 +113,7 @@ body{
 }
 .info{text-align:center;padding:18px}
 
-/* SETAS */
+/* ================= SETAS ================= */
 .seta{
     position:absolute;
     top:50%;
@@ -114,22 +131,72 @@ body{
 .esq{left:12px}
 .dir{right:12px}
 
-/* RESPONSIVO */
+/* ================================================= */
+/* ================= MOBILE ONLY =================== */
+/* ================================================= */
 @media(max-width:768px){
-    .navbar{padding:0 15px}
-    .navbar img{height:70px}
-    .hero{padding:0 20px;height:85vh}
-    .hero h1{font-size:32px;text-align:center}
-    .section{padding:70px 20px}
-    .section h2{text-align:center;font-size:26px}
-    .produtos{justify-content:center}
-    .card{width:100%;max-width:340px}
+
+    .navbar{
+        padding:0 15px;
+    }
+
+    .navbar img{
+        height:70px;
+    }
+
+    /* HERO MOBILE */
+    .hero{
+        height:80vh;
+        padding:0 20px;
+        justify-content:center;
+        text-align:center;
+        background:
+          linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.95)),
+          url("mulher-mobile.jpeg"); /* imagem diferente */
+        background-size:cover;
+        background-position:center;
+    }
+
+    .hero h1{
+        font-size:32px;
+        animation:heroMobile .9s ease;
+    }
+
+    @keyframes heroMobile{
+        from{opacity:0;transform:translateY(30px)}
+        to{opacity:1;transform:translateY(0)}
+    }
+
+    .section{
+        padding:70px 20px;
+    }
+
+    .section h2{
+        text-align:center;
+        font-size:26px;
+    }
+
+    .produtos{
+        justify-content:center;
+    }
+
+    .card{
+        width:100%;
+        max-width:340px;
+        animation:cardMobile .8s ease;
+    }
+
+    @keyframes cardMobile{
+        from{opacity:0;transform:translateY(40px)}
+        to{opacity:1;transform:translateY(0)}
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
 <div class="menu-lateral" id="menu">
     <div class="menu-fechar" onclick="toggleMenu()">←</div>
     <a href="index.html">Home</a>
@@ -139,17 +206,21 @@ body{
     <a href="https://www.instagram.com/queen.fit.store/" target="_blank">Instagram</a>
 </div>
 
+<!-- NAVBAR -->
 <div class="navbar">
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
     <img src="logo.png">
 </div>
 
+<!-- HERO -->
 <div class="hero">
     <h1>Vista sua melhor versão</h1>
 </div>
 
+<!-- PRODUTO -->
 <div class="section">
 <h2>Mais Vendido</h2>
+
 <div class="produtos">
 <div class="card">
 <img id="img1" src="short.jpeg">
@@ -164,6 +235,7 @@ body{
 function toggleMenu(){
     document.getElementById("menu").classList.toggle("active");
 }
+
 const imgs=["short.jpeg","short.png","short3.jpeg"];
 let i=0;
 function next(){i=(i+1)%imgs.length;img1.src=imgs[i]}
